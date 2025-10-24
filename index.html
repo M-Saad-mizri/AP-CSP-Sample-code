@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AP CSP Create Task Example</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    margin: 0;
+    padding: 0;
+    color: #333;
+  }
+
+  header {
+    background: #007bff;
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+
+  main {
+    max-width: 800px;
+    margin: 30px auto;
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+
+  section {
+    margin-bottom: 25px;
+  }
+
+  h2, h3 {
+    color: #007bff;
+  }
+
+  .container {
+    background: #f9f9f9;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 0 8px rgba(0,0,0,0.05);
+  }
+
+  input {
+    width: 80%;
+    padding: 10px;
+    margin: 15px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+  }
+
+  button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  button:hover {
+    background-color: #0056b3;
+  }
+
+  #output {
+    margin-top: 20px;
+    font-weight: bold;
+    color: #444;
+  }
+
+  pre {
+    background: #272822;
+    color: #f8f8f2;
+    padding: 15px;
+    border-radius: 10px;
+    overflow-x: auto;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>AP CSP Create Task Example Program</h1>
+</header>
+
+<main>
+  <section>
+    <h2>📘 Create Task Requirements</h2>
+    <ul>
+      <li>Program must include <strong>input</strong> and <strong>output</strong></li>
+      <li>Use of a <strong>list (array)</strong> to store and process data</li>
+      <li>A <strong>student-developed procedure</strong> that:
+        <ul>
+          <li>Has at least one parameter</li>
+          <li>Uses <strong>sequencing</strong>, <strong>selection</strong>, and <strong>iteration</strong></li>
+        </ul>
+      </li>
+      <li>Program must <strong>call the procedure</strong> at least once</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>✅ How This Program Meets the Requirements</h2>
+    <ul>
+      <li><strong>Input:</strong> User enters a number (threshold)</li>
+      <li><strong>Output:</strong> Program displays all scores above that number</li>
+      <li><strong>List:</strong> Uses an array <code>scores = [56, 72, 88, 45, 91, 67, 100]</code></li>
+      <li><strong>Procedure:</strong> <code>getHighScores(threshold)</code> includes:
+        <ul>
+          <li>Sequencing – steps in order</li>
+          <li>Selection – <code>if (score > threshold)</code></li>
+          <li>Iteration – <code>for...of</code> loop</li>
+        </ul>
+      </li>
+      <li><strong>Procedure Call:</strong> Done inside <code>showHighScores()</code></li>
+    </ul>
+  </section>
+
+  <section class="container">
+    <h3>💻 Run the Program</h3>
+    <p>Enter a number to see which scores are higher:</p>
+
+    <input type="number" id="userInput" placeholder="Enter threshold">
+    <br>
+    <button id="runButton">Run Program</button>
+    <p id="output"></p>
+  </section>
+
+  <section>
+    <h3>📄 Program Code</h3>
+    <pre>
+// This code was written and modified by a student
+// for AP CSP Create Performance Task demonstration.
+
+// List (Collection)
+const scores = [56, 72, 88, 45, 91, 67, 100];
+
+// Student-developed procedure
+function getHighScores(threshold) {
+  const result = [];
+  for (let score of scores) {
+    if (score > threshold) {
+      result.push(score);
+    }
+  }
+  return result;
+}
+
+// Input + Output
+function showHighScores() {
+  const userValue = Number(document.getElementById("userInput").value);
+  const high = getHighScores(userValue);
+  const output = document.getElementById("output");
+
+  if (high.length > 0) {
+    output.textContent = `Scores above ${userValue}: ${high.join(", ")}`;
+  } else {
+    output.textContent = `No scores above ${userValue}.`;
+  }
+}
+
+// Attach event listener
+document.getElementById("runButton").addEventListener("click", showHighScores);
+    </pre>
+  </section>
+</main>
+
+<script>
+const scores = [56, 72, 88, 45, 91, 67, 100];
+
+function getHighScores(threshold) {
+  const result = [];
+  for (let score of scores) {
+    if (score > threshold) {
+      result.push(score);
+    }
+  }
+  return result;
+}
+
+function showHighScores() {
+  const userValue = Number(document.getElementById("userInput").value);
+  const high = getHighScores(userValue);
+  const output = document.getElementById("output");
+
+  if (high.length > 0) {
+    output.textContent = `Scores above ${userValue}: ${high.join(", ")}`;
+  } else {
+    output.textContent = `No scores above ${userValue}.`;
+  }
+}
+
+document.getElementById("runButton").addEventListener("click", showHighScores);
+</script>
+
+</body>
+</html>
